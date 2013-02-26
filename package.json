@@ -3,7 +3,7 @@
 	"author"		: "Stackdot <info@stackdot.com> (Quinton Pike)",
 	"name"			: "openvz",
 	"description"	: "OpenVZ wrapper for NodeJS",
-	"version"		: "0.1.2",
+	"version"		: "0.1.3",
 	"main"			: "VZ.js",
 	"keywords"		: ["openvz","wrapper","api","vms","virtualization"],
 	
