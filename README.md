@@ -7,6 +7,20 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
 
       npm install openvz
 
+## Default Configs:
+
+      nameserver		: '8.8.8.8',
+      userpasswd 		: 'root:root',
+      ostemplate		: 'centos-6-x86_64',
+      layout		: 'ploop',
+      diskspace		: '10G:10G',
+      hostname		: 'vm{$VMID}.localhost',
+      root			: '/vz/root/{$VMID}',
+      private		: '/vz/private/{$VMID}',
+      ipadd			: '192.168.1.{$VMID}'
+      
+to change a default attribute, pass it into the constructor:
+      var vz = new VZ({ layout:'simfs' });
 
 ## Example Usage:
 
