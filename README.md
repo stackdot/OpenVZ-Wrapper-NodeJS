@@ -20,6 +20,7 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
       ipadd             : '192.168.1.{$VMID}'
       
 to change a default attribute, pass it into the constructor:
+
       var vz = new VZ({ layout:'simfs' });
 
 ## Example Usage:
