@@ -3,17 +3,13 @@
 	"author"		: "Stackdot <info@stackdot.com> (Quinton Pike)",
 	"name"			: "openvz",
 	"description"	: "OpenVZ wrapper for NodeJS",
-	"version"		: "0.1.1",
+	"version"		: "0.1.2",
 	"main"			: "VZ.js",
 	"keywords"		: ["openvz","wrapper","api","vms","virtualization"],
 	
 	"repository" : {
 		"type"	: "git",
 		"url"	: "https://github.com/qrpike/OpenVZ-Wrapper-NodeJS"
-	},
-	
-	"bin"			: {
-		"replaceme": "./bin/replaceme"
 	},
 	
 	"dependencies"		: {
