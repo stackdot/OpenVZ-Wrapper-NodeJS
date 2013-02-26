@@ -9,9 +9,7 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
       var VZ = require('openvz');
       
       var onReady = function(){
-      
         console.log( 'All VMs', host.containers );
-      
       }
       
       var vzDefaults = {
