@@ -3,6 +3,10 @@ OpenVZ Wrapper NodeJS
 
 NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so be careful. 
 
+## To Install:
+
+      npm install openvz
+
 
 ## Example Usage:
 
