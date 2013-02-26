@@ -11,7 +11,7 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
       var onReady = function(){
       
         console.log( 'All VMs', host.containers );
-        host.createContainer({ ctid:115 },function(e,vm){
+        host.createContainer({ ctid:115, nameserver:'8.8.4.4' },function(e,vm){
         
             console.log('VM Created');
             vm.start(function(e){
