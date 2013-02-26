@@ -37,3 +37,25 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
       };
       
       var host = new VZ(vzDefaults);
+      
+      
+## Running Container Specific Commands:
+
+      var vm = host.getContainerByCTID( 115 );
+      
+      // To Stop:
+      vm.stop();
+      
+      // To Start:
+      vm.start();
+      
+      // To Restart:
+      vm.restart();
+      
+      // Run a custom command:
+      vm.run('set',{ cpuunits:1000, diskspace:'10G:10G', save:true });
+            // would run: vzctl set 115 --cpuunits 1000 --diskspace '10G:10G' --save
+
+
+
+
