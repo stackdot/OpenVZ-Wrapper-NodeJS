@@ -14,6 +14,8 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
       
       var vzDefaults = {
         hostname  : 'container-{$VMID}.localhost',
+        ipadd     : '192.168.1.{$VMID}',
+        layout    : 'ploop',
         onError   : function( error ){
           console.log( 'Unexpected Error', error );
         },
