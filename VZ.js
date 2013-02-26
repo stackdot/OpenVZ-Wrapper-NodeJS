@@ -51,7 +51,7 @@ VZ.prototype.init = function( callback ){
 
 	/* Grab all the containers on this Host */
 	this.getContainers({},(function(){
-		console.log('Total Containers: ',this.containers.length);
+		console.log('Total Containers: ',this.containers.length); 
 		callback();
 	}).bind(this));
 	
