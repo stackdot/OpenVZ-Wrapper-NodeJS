@@ -131,6 +131,8 @@
       });
     };
 
+    VM(Object);
+
     return OpenVZ;
 
   })();

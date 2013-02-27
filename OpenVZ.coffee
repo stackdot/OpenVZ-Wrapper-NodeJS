@@ -8,14 +8,10 @@ Validator 		= require('validator').Validator
 
 
 
-
-
-
-
-
-
+## OpenVZ Main Object ##
 class OpenVZ
 
+	## Constructor for this Object ##
 	constructor: (@params = {}) ->
 		@containers		= [];
 		@updateInterval	= 10000;
@@ -34,8 +30,12 @@ class OpenVZ
 		@getContainers()
 		@interval = setInterval @getContainers, @updateInterval
 	
+	
+	## Get a default value, with str replacement ##
 	getVMDefault: ( attr, ctid )=> @defaults[attr].replace /\$\{VMID\}/g, ctid
 	
+	
+	## Get this hosts containers ##
 	getContainers: ( cb ) =>
 		@run 'vzlist -a -j', (err,res)=>
 			_containers = JSON.parse res
@@ -44,11 +44,13 @@ class OpenVZ
 			cb? err, @containers
 	
 	
+	## Run a command ##
 	run: ( cmd , cb) =>
 		exec cmd, (error, stdout, stderr)->
 			cb? error, stdout
 			
-			
+	
+	## Format a string for a command ##		
 	formatString: ( attrs )->
 		str = for attr, value of attrs
 			if attr isnt 'save' then "--#{attr} #{value} "
@@ -56,10 +58,13 @@ class OpenVZ
 		str.join ' '
 	
 	
+	## Get a container by its CTID ##
 	getContainerByCTID: ( CTID ) =>
 		for container in @containers
 			return container if container.data.ctid is CTID;
 	
+	
+	## Create a new VM with the set options ##
 	createContainer: ( options = {}, cb )=>
 		v = new Validator
 		container = 
@@ -99,18 +104,24 @@ class OpenVZ
 
 
 
-		
+##
+	VM Object
+##
 class Container extends OpenVZ
 	
+	## Constructor for each VM ##
 	constructor: ( @data ) ->
 
+	## Create this VM ##
 	create: ( cb )=> @run 'create', @getAttrs(['ipadd','root','private','hostname','layout','ostemplate','diskspace']), cb
 	
+	## Set the default attributes and save ##
 	setAll: ( cb )=>
 		attrs = @getAttrs(['nameserver','userpasswd','onboot','cpuunits','ram'])
 		attrs.save = true 
 		@run 'set', attrs, cb
-		
+	
+	## Get Container Attributes if set ##
 	getAttrs: ( attrs )=>
 		obj = {}; 
 		for attr in attrs
@@ -128,13 +139,11 @@ class Container extends OpenVZ
 		super cmdStr, cb
 
 	## Basic Methods ##
-	start: ( cb )=> @run 'start',cb
-	stop: ( cb )=> @run 'stop',cb
-	destroy: ( cb )=> @run 'destroy',cb
-	
-	## Stop and Go ##
-	suspend: ( dumpFile, cb )=> @run 'suspend', dumpfile:dumpFile, cb
-	restore: ( dumpFile, cb )=> @run 'restore', dumpfile:dumpFile, cb
+	start: 		( cb )=> @run 'start',cb
+	stop: 		( cb )=> @run 'stop',cb
+	destroy: 	( cb )=> @run 'destroy',cb 
+	suspend: 	( dumpFile, cb )=> @run 'suspend', dumpfile:dumpFile, cb
+	restore: 	( dumpFile, cb )=> @run 'restore', dumpfile:dumpFile, cb
 
 
 
