@@ -54,6 +54,7 @@
       return this.run('vzlist -a -j', function(err, res) {
         var container, _containers, _i, _len;
         _containers = JSON.parse(res);
+        _this.containers = [];
         for (_i = 0, _len = _containers.length; _i < _len; _i++) {
           container = _containers[_i];
           _this.containers.push(new Container(container));

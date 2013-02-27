@@ -40,6 +40,7 @@ class OpenVZ
 	getContainers: ( cb ) =>
 		@run 'vzlist -a -j', (err,res)=>
 			_containers = JSON.parse res
+			@containers = []
 			for container in _containers
 				@containers.push new Container container 
 			cb? err, @containers
