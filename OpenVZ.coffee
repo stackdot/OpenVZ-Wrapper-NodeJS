@@ -26,8 +26,9 @@ class OpenVZ
 			hostname		: @params.hostname 		|| 'vm${VMID}.localhost'
 			root			: @params.root 			|| '/vz/root/${VMID}'
 			private			: @params.private 		|| '/vz/private/${VMID}'
-		
-		@getContainers()
+
+
+		@getContainers params.onReady
 		@interval = setInterval @getContainers, @updateInterval
 	
 	
@@ -40,7 +41,7 @@ class OpenVZ
 		@run 'vzlist -a -j', (err,res)=>
 			_containers = JSON.parse res
 			for container in _containers
-				@containers.push new Container container
+				@containers.push new Container container 
 			cb? err, @containers
 	
 	
@@ -87,7 +88,7 @@ class OpenVZ
 		vm = new Container container
 		vm.create (e,res)=>
 			@containers.push vm
-			cb?(e,res)
+			cb?(e,vm)
 		
 
 
@@ -104,9 +105,7 @@ class OpenVZ
 
 
 
-##
-	VM Object
-##
+## VM Object ##
 class Container extends OpenVZ
 	
 	## Constructor for each VM ##
@@ -131,11 +130,11 @@ class Container extends OpenVZ
 
 	## Run a command on this VM ##
 	run: ( cmd, attrs, cb )=>
-		if attr? 
+		if attrs instanceof Function
 			cb = attrs
 			attrs = {}
-			
 		cmdStr = "vzctl #{cmd} #{@data.ctid} "+@formatString attrs
+		console.log cmdStr
 		super cmdStr, cb
 
 	## Basic Methods ##
@@ -144,7 +143,7 @@ class Container extends OpenVZ
 	destroy: 	( cb )=> @run 'destroy',cb 
 	suspend: 	( dumpFile, cb )=> @run 'suspend', dumpfile:dumpFile, cb
 	restore: 	( dumpFile, cb )=> @run 'restore', dumpfile:dumpFile, cb
-
+	
 
 
 
@@ -158,10 +157,6 @@ Validator.prototype.error = (msg)->
 	@_errors.push msg
 	return this
 Validator.prototype.getErrors = ()->
-    @._errors
-		
-vz = new OpenVZ
-vz.createContainer { ctid:110, ipadd:'8.8.8.${VMID}', cpuunits:900 }, (err,res)->
-	console.log err,res
+    @._errors 
 	
-exports.app = OpenVZ
+module.exports = OpenVZ
