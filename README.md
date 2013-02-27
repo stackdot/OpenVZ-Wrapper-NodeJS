@@ -25,7 +25,7 @@ to change a default attribute, pass it into the constructor:
 
 ## Example Usage:
 
-      var VZ = require('openvz').app; // must include the .app on the end.
+      var VZ = require('openvz')
       
       var onReady = function(){
       
@@ -45,9 +45,6 @@ to change a default attribute, pass it into the constructor:
         hostname  : 'container-{$VMID}.localhost',
         ipadd     : '192.168.1.{$VMID}',
         layout    : 'ploop',
-        onError   : function( error ){
-          console.log( 'Unexpected Error', error );
-        },
         onReady   : onReady
       };
       
