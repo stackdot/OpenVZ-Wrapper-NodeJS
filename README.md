@@ -25,7 +25,7 @@ to change a default attribute, pass it into the constructor:
 
 ## Example Usage:
 
-      var VZ = require('openvz')
+      var VZ = require('openvz');
       
       var onReady = function(){
       
