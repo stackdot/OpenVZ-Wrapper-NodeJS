@@ -63,6 +63,7 @@
     };
 
     OpenVZ.prototype.run = function(cmd, cb) {
+      console.log('Running Command: '.green, cmd);
       return exec(cmd, function(error, stdout, stderr) {
         return typeof cb === "function" ? cb(error, stdout) : void 0;
       });
@@ -188,7 +189,6 @@
         attrs = {};
       }
       cmdStr = ("vzctl " + cmd + " " + this.data.ctid + " ") + this.formatString(attrs);
-      console.log(cmdStr);
       return Container.__super__.run.call(this, cmdStr, cb);
     };
 

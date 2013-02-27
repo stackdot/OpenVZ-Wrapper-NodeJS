@@ -47,6 +47,7 @@ class OpenVZ
 	
 	## Run a command ##
 	run: ( cmd , cb) =>
+		console.log 'Running Command: '.green,cmd
 		exec cmd, (error, stdout, stderr)->
 			cb? error, stdout
 			
@@ -136,7 +137,6 @@ class Container extends OpenVZ
 			cb = attrs
 			attrs = {}
 		cmdStr = "vzctl #{cmd} #{@data.ctid} "+@formatString attrs
-		console.log cmdStr
 		super cmdStr, cb
 
 	## Basic Methods ##
