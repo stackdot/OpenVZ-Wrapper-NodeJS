@@ -97,8 +97,8 @@
       }
     };
 
-    OpenVZ.prototype.asyncFunc = function(func, cb) {
-      return cb(this[func]());
+    OpenVZ.prototype.asyncFunc = function(func, options, cb) {
+      return cb(this[func](options));
     };
 
     OpenVZ.prototype.createContainer = function(options, cb) {
