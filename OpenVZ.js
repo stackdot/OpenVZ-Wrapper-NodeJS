@@ -126,7 +126,7 @@
       }
       vm = new Container(container);
       return vm.create(function(e, res) {
-        _this.containers.push(vm);
+        _this.getContainers();
         return typeof cb === "function" ? cb(e, vm) : void 0;
       });
     };

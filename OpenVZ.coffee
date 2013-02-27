@@ -87,7 +87,7 @@ class OpenVZ
 		
 		vm = new Container container
 		vm.create (e,res)=>
-			@containers.push vm
+			@getContainers()
 			cb?(e,vm)
 		
 
