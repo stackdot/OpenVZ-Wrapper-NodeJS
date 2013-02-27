@@ -4,7 +4,7 @@
 	"name"			: "openvz",
 	"description"	: "OpenVZ wrapper for NodeJS",
 	"version"		: "0.1.3",
-	"main"			: "VZ.js",
+	"main"			: "OpenVZ.js",
 	"keywords"		: ["openvz","wrapper","api","vms","virtualization"],
 	
 	"repository" : {
