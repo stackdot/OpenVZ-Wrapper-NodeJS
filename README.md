@@ -41,14 +41,14 @@ to change a default attribute, pass it into the constructor:
         
       }
       
-      var vzDefaults = {
+      var containerDefaults = {
         hostname  : 'container-${VMID}.localhost',
         ipadd     : '192.168.1.${VMID}',
         layout    : 'ploop',
         onReady   : onReady
       };
       
-      var host = new VZ(vzDefaults);
+      var host = new VZ(containerDefaults);
       
       
 ## Running Container Specific Commands:
