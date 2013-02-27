@@ -43,11 +43,11 @@ class OpenVZ
 			for container in _containers
 				@containers.push new Container container 
 			cb? err, @containers
-	
+		,false
 	
 	## Run a command ##
-	run: ( cmd , cb) =>
-		console.log 'Running Command: '.green,cmd
+	run: ( cmd , cb, logit = true) =>
+		if logit then console.log 'Running Command: '.green,cmd
 		exec cmd, (error, stdout, stderr)->
 			cb? error, stdout
 			

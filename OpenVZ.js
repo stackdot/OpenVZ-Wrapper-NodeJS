@@ -59,11 +59,16 @@
           _this.containers.push(new Container(container));
         }
         return typeof cb === "function" ? cb(err, _this.containers) : void 0;
-      });
+      }, false);
     };
 
-    OpenVZ.prototype.run = function(cmd, cb) {
-      console.log('Running Command: '.green, cmd);
+    OpenVZ.prototype.run = function(cmd, cb, logit) {
+      if (logit == null) {
+        logit = true;
+      }
+      if (logit) {
+        console.log('Running Command: '.green, cmd);
+      }
       return exec(cmd, function(error, stdout, stderr) {
         return typeof cb === "function" ? cb(error, stdout) : void 0;
       });
