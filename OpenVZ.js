@@ -144,6 +144,7 @@
       this.restore = __bind(this.restore, this);
       this.suspend = __bind(this.suspend, this);
       this.destroy = __bind(this.destroy, this);
+      this.restart = __bind(this.restart, this);
       this.stop = __bind(this.stop, this);
       this.start = __bind(this.start, this);
       this.run = __bind(this.run, this);
@@ -192,6 +193,10 @@
 
     Container.prototype.stop = function(cb) {
       return this.run('stop', cb);
+    };
+
+    Container.prototype.restart = function(cb) {
+      return this.run('restart', cb);
     };
 
     Container.prototype.destroy = function(cb) {

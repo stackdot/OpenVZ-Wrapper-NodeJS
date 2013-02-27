@@ -122,7 +122,7 @@ class Container extends OpenVZ
 	
 	## Get Container Attributes if set ##
 	getAttrs: ( attrs )=>
-		obj = {}; 
+		obj = {}
 		for attr in attrs
 			if @data[attr]?
 				obj[attr] = @data[attr]
@@ -140,6 +140,7 @@ class Container extends OpenVZ
 	## Basic Methods ##
 	start: 		( cb )=> @run 'start',cb
 	stop: 		( cb )=> @run 'stop',cb
+	restart: 	( cb )=> @run 'restart',cb
 	destroy: 	( cb )=> @run 'destroy',cb 
 	suspend: 	( dumpFile, cb )=> @run 'suspend', dumpfile:dumpFile, cb
 	restore: 	( dumpFile, cb )=> @run 'restore', dumpfile:dumpFile, cb
