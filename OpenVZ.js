@@ -22,6 +22,7 @@
     function OpenVZ(params) {
       this.params = params != null ? params : {};
       this.createContainer = __bind(this.createContainer, this);
+      this.asyncFunc = __bind(this.asyncFunc, this);
       this.getContainerByCTID = __bind(this.getContainerByCTID, this);
       this.run = __bind(this.run, this);
       this.getContainers = __bind(this.getContainers, this);
@@ -94,6 +95,10 @@
           return container;
         }
       }
+    };
+
+    OpenVZ.prototype.asyncFunc = function(func, cb) {
+      return cb(this[func]());
     };
 
     OpenVZ.prototype.createContainer = function(options, cb) {

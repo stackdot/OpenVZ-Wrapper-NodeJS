@@ -64,6 +64,8 @@ class OpenVZ
 		for container in @containers
 			return container if container.data.ctid is CTID;
 	
+	asyncFunc: (func,cb) =>
+		cb (@[func]())
 	
 	## Create a new VM with the set options ##
 	createContainer: ( options = {}, cb )=>
