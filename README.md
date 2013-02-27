@@ -15,9 +15,9 @@ NodeJS Wrapper for the OpenVZ CLI. This does not do a lot of error checking, so 
       layout            : 'ploop',
       diskspace         : '10G:10G',
       hostname          : 'vm{$VMID}.localhost',
-      root              : '/vz/root/{$VMID}',
-      private           : '/vz/private/{$VMID}',
-      ipadd             : '192.168.1.{$VMID}'
+      root              : '/vz/root/${VMID}',
+      private           : '/vz/private/${VMID}',
+      ipadd             : '192.168.1.${VMID}'
       
 to change a default attribute, pass it into the constructor:
 
@@ -25,7 +25,7 @@ to change a default attribute, pass it into the constructor:
 
 ## Example Usage:
 
-      var VZ = require('openvz')
+      var VZ = require('openvz');
       
       var onReady = function(){
       
@@ -41,14 +41,14 @@ to change a default attribute, pass it into the constructor:
         
       }
       
-      var vzDefaults = {
-        hostname  : 'container-{$VMID}.localhost',
-        ipadd     : '192.168.1.{$VMID}',
+      var containerDefaults = {
+        hostname  : 'container-${VMID}.localhost',
+        ipadd     : '192.168.1.${VMID}',
         layout    : 'ploop',
         onReady   : onReady
       };
       
-      var host = new VZ(vzDefaults);
+      var host = new VZ(containerDefaults);
       
       
 ## Running Container Specific Commands:
